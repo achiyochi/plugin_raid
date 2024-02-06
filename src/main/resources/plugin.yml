@@ -1,0 +1,4 @@
+name: plugin_raid
+version: '${project.version}'
+main: com.pixelnations.plugin_raid.Plugin_raid
+api-version: '1.20'
