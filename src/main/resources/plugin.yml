@@ -2,3 +2,9 @@ name: plugin_raid
 version: '${project.version}'
 main: com.pixelnations.plugin_raid.Plugin_raid
 api-version: '1.20'
+
+commands :
+  runraid:
+    description: 襲撃を開始します（OP権限のみ）
+    aliases:
+      - rrd
