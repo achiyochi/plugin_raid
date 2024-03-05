@@ -20,7 +20,9 @@ public class score {
             objective.setDisplayName(ChatColor.GREEN + "raid kills");
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
-            objective.getScore(player).setScore((int)player.getHealth());
+            Score score = objective.getScore(player);
+            int count = score.getScore();
+            objective.getScore(player).setScore(count);
 //            Score score = objective.getScore(ChatColor.GREEN + "kills:");
 //            score.setScore((int)player.getHealth());
         }
@@ -31,5 +33,20 @@ public class score {
 
 //        Score score = objective.getScore(p);
 //        score.setScore(42);
+    }
+    public static void ScoreUpdate(String p) {
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getMainScoreboard();
+        Objective objective = board.getObjective("raid-challenge");
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getName() == p) {
+//                Bukkit.broadcastMessage("プレーヤー名が一致していることを確認");
+                Score score = objective.getScore(player);
+                int count = score.getScore();
+//                Bukkit.broadcastMessage(String.valueOf(count));
+//                objective.getScore(player).setScore(0);
+                objective.getScore(player).setScore(count + 1);
+            }
+        }
     }
 }

@@ -34,6 +34,10 @@ public class raid {
     }
 
     public static void RaidStart(Map date) {
+//        for (int enemyList : Plugin_raid.ENEMY_LISTS) {
+//
+//        }
+
         if (date.get("minute").equals(0)) {
 
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -88,6 +92,8 @@ public class raid {
                             SPEED.apply((LivingEntity) e2);
                             FIRE_RESISTANCE.apply((LivingEntity) e);
                             FIRE_RESISTANCE.apply((LivingEntity) e2);
+                            Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
+                            Plugin_raid.ENEMY_LISTS.add(e2.getEntityId());
                         } else {
                             Entity e = location.getWorld().spawnEntity(location.add(x, 1, z), EntityType.PIGLIN_BRUTE);
                             Entity e2 = location.getWorld().spawnEntity(location.add(x, 1, z), EntityType.HOGLIN);
@@ -99,24 +105,37 @@ public class raid {
                             SPEED.apply((LivingEntity) e2);
                             FIRE_RESISTANCE.apply((LivingEntity) e);
                             FIRE_RESISTANCE.apply((LivingEntity) e2);
+                            Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
+                            Plugin_raid.ENEMY_LISTS.add(e2.getEntityId());
                         }
                     } else if (Objects.equals(inWorld, "world")) {
                         if (!Objects.equals(String.valueOf(isBlock.getType()), "AIR") && !Objects.equals(String.valueOf(isBlock.getType()), "WATER")) {
                             Entity e = location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.PILLAGER);
                             GLOWING.apply((LivingEntity) e);
                             Block isBlockInWater = location.clone().add(0, 1, 0).getBlock();
+//                            player.sendMessage(String.valueOf(e.getEntityId()));
+                            Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
                             if (Objects.equals(String.valueOf(isBlockInWater.getType()), "WATER")) {
                                 WATER_BREATHING.apply((LivingEntity) e);
+//                                player.sendMessage(String.valueOf(e.getEntityId()));
+                                Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
                             }
                         } else if (Objects.equals(String.valueOf(isBlock.getType()), "WATER")){
                             Entity e = location.getWorld().spawnEntity(location.add(x, 1, z), EntityType.PILLAGER);
                             WATER_BREATHING.apply((LivingEntity) e);
                             GLOWING.apply((LivingEntity) e);
+//                            player.sendMessage(String.valueOf(e.getEntityId()));
+                            Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
+
                         } else {
                             Entity e = location.getWorld().spawnEntity(location.add(x, 1, z), EntityType.PILLAGER);
                             GLOWING.apply((LivingEntity) e);
+//                            player.sendMessage(String.valueOf(e.getEntityId()));
+                            Plugin_raid.ENEMY_LISTS.add(e.getEntityId());
+
                         }
                     }
+
 
 
 
