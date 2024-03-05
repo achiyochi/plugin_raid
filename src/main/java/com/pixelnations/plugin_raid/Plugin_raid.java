@@ -16,6 +16,7 @@ public final class Plugin_raid extends JavaPlugin {
     public void onEnable() {
         // プラグインが起動した時の処理
         plugin = this;
+        com.pixelnations.plugin_raid.score.ScoreLunch();
 
         com.pixelnations.plugin_raid.raid.RaidObserve();
         getCommand("runraid").setExecutor(new RunRaid());
